@@ -17,6 +17,7 @@ tokens
 LCURLY : '{';
 RCURLY : '}';
 
+
 IF: 'if';
 ELSE: 'else';
 FOR: 'for';
@@ -26,11 +27,11 @@ MENOS:'-';
 VEZES:'*';
 DIV:'/';
 
-MENORQUE:'<';
+MENOR:'<';
 MENORIGUAL:'<=';
-MAIORQUE:'>';
+MAIOR:'>';
 MAIORIGUAL:'>=';
-DIFERENTEDE:'!=';
+DIFERENTE:'!=';
 IGUAL:'==';
 
 DEFINE: '=';
@@ -44,7 +45,7 @@ LPAR:'(';
 RPAR:')';
 
 VIRGULA : ',';
-DPONTOS: ':';
+DOISPONTOS: ':';
 PVIRGULA : ';';
 
 INT: 'int';
@@ -58,17 +59,14 @@ CONTINUE: 'continue';
 RETURN: 'return';
 VOID: 'void';
 
-
-
-WS : (' ' | '\n' | '\t') -> skip;
-
+WS : [ \t\r\n]+ -> skip;
 SL_COMMENT : '//' (~'\n')*'\n' -> skip;
 
 ID : (LETRAS|'_')(LETRAS|NUM|'_')*;
 CHAR : '\'' (ESC|LETRAS|NUM|OUTROS) '\'';
 STRING : '"'(LETRAS|NUM|SIMBOLOS)* '"';
+HEXLITERAL : PREFIXOHEX (HEXLETRAS|NUM)+;
 INTLITERAL : (NUM)+;
-HEXLITERAL : '0x'(NUM|HEXLETRAS)+;
 
 fragment ESC : '\\'('n'|'"'|'t'|'\\');
 fragment LETRAS : ('a'..'z'|'A'..'Z');
@@ -76,3 +74,4 @@ fragment NUM  : ('0'..'9');
 fragment SIMBOLOS : (' '|'!'|'"'|'#'|'$'|'%'|'&'|'\\\''|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~'|'\t'|'\\'|'\"');
 fragment OUTROS: (' '|'!'|'#'|'$'|'%'|'&'|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~');
 fragment HEXLETRAS : ('a'..'f'|'A'..'F');
+fragment PREFIXOHEX : '0x';
