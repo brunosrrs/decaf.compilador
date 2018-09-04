@@ -35,13 +35,19 @@ class Main {
 		        				type = " IDENTIFIER";
 		        				break;
 						case DecafLexer.CHAR:
-							type = " CHARLITERAL";
-							break;
+		        				type = " CHARLITERAL";
+		        				break;
 						case DecafLexer.STRING:
-							type = " STRINGLITERAL";
-							break;
+		        				type = " STRINGLITERAL";
+		        				break;
 						case DecafLexer.INTLITERAL:
-							type = " INTLITERAL";
+		        				type = " INTLITERAL";
+		        				break;
+						case DecafLexer.HEXLITERAL:
+		        				type = " INTLITERAL";
+		        				break;
+						case DecafLexer.BOOLEANLITERAL:
+							type = " BOOLEANLITERAL";
 							break;
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);

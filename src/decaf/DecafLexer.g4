@@ -17,32 +17,62 @@ tokens
 LCURLY : '{';
 RCURLY : '}';
 
-ID  :
-  ('a'..'z' | 'A'..'Z'| '0'..'9' | '_')+;
+IF: 'if';
+ELSE: 'else';
+FOR: 'for';
 
-WS_ : (' '|'_'| '\n' ) -> skip;
+MAIS:'+';
+MENOS:'-';
+VEZES:'*';
+DIV:'/';
 
-SL_COMMENT : '//' (~'\n')* '\n' -> skip;
+MENORQUE:'<';
+MENORIGUAL:'<=';
+MAIORQUE:'>';
+MAIORIGUAL:'>=';
+DIFERENTEDE:'!=';
+IGUAL:'==';
 
-CHAR : '\'' (ESC| ALFABETO| IDCCHAR| NUMEROS) '\'';
-STRING : '"' (ALFABETO|NUMEROS|IDC)* '"';
-INTLITERAL : '0x'(NUMEROS|HEXALFA)+;
+DEFINE: '=';
+
+E:'&&';
+OU:'||';
+
+LCOL:'[';
+RCOL:']';
+LPAR:'(';
+RPAR:')';
+
+VIRGULA : ',';
+DPONTOS: ':';
+PVIRGULA : ';';
+
+INT: 'int';
+BOOLEAN: 'boolean';
+BOOLEANLITERAL: 'true'|'false';
+
+BREAK: 'break';
+CALLOUT: 'callout';
+CLASS: 'class';
+CONTINUE: 'continue';
+RETURN: 'return';
+VOID: 'void';
 
 
-fragment
-ESC :  '\\' ('n'| '"'| 't' | '\\');
-fragment
-IDC : (' '|'!'|'"'|'#'|'$'|'%'|'&'|'\\\''|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~'|'\t'|'\\'|'\"');
 
-fragment
-IDCCHAR :  (' '|'!'|'#'|'$'|'%'|'&'|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~');
+WS : (' ' | '\n' | '\t') -> skip;
 
+SL_COMMENT : '//' (~'\n')*'\n' -> skip;
 
-    
-fragment
-NUMEROS : ('0'..'9');
-fragment
-ALFABETO  : ('a'..'z' | 'A'..'Z');
-fragment
-HEXALFA  : ('a'..'f' | 'A'..'F');
+ID : (LETRAS|'_')(LETRAS|NUM|'_')*;
+CHAR : '\'' (ESC|LETRAS|NUM|OUTROS) '\'';
+STRING : '"'(LETRAS|NUM|SIMBOLOS)* '"';
+INTLITERAL : (NUM)+;
+HEXLITERAL : '0x'(NUM|HEXLETRAS)+;
 
+fragment ESC : '\\'('n'|'"'|'t'|'\\');
+fragment LETRAS : ('a'..'z'|'A'..'Z');
+fragment NUM  : ('0'..'9');
+fragment SIMBOLOS : (' '|'!'|'"'|'#'|'$'|'%'|'&'|'\\\''|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~'|'\t'|'\\'|'\"');
+fragment OUTROS: (' '|'!'|'#'|'$'|'%'|'&'|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~');
+fragment HEXLETRAS : ('a'..'f'|'A'..'F');
