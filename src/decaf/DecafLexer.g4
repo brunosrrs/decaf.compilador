@@ -66,7 +66,7 @@ ID : (LETRAS|'_')(LETRAS|NUM|'_')*;
 CHAR : '\'' (ESC|LETRAS|NUM|OUTROS) '\'';
 STRING : '"'(LETRAS|NUM|SIMBOLOS)* '"';
 HEXLITERAL : PREFIXOHEX (HEXLETRAS|NUM)+;
-INTLITERAL : (NUM)+;
+INTLITERAL : NUM(NUM)*~'x';
 
 fragment ESC : '\\'('n'|'"'|'t'|'\\');
 fragment LETRAS : ('a'..'z'|'A'..'Z');
