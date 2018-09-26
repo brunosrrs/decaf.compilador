@@ -55,6 +55,7 @@ BOOLEANLITERAL: 'true'|'false';
 BREAK: 'break';
 CALLOUT: 'callout';
 CLASS: 'class';
+PROGRAM: 'Program';
 CONTINUE: 'continue';
 RETURN: 'return';
 VOID: 'void';
