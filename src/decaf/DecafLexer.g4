@@ -14,31 +14,23 @@ tokens
   TK_class
 }
 
-LCURLY : '{';
-RCURLY : '}';
-
+CALLOUT: 'callout';
+PROGRAM: 'Program';
+BREAK: 'break';
+CLASS: 'class';
+CONTINUE: 'continue';
+RETURN: 'return';
+VOID: 'void';
 
 IF: 'if';
 ELSE: 'else';
 FOR: 'for';
+INT: 'int';
+BOOLEAN: 'boolean';
+BOOLEANLITERAL: 'true'|'false';
 
-MAIS:'+';
-MENOS:'-';
-VEZES:'*';
-DIV:'/';
-
-MENOR:'<';
-MENORIGUAL:'<=';
-MAIOR:'>';
-MAIORIGUAL:'>=';
-DIFERENTE:'!=';
-IGUAL:'==';
-
-DEFINE: '=';
-
-E:'&&';
-OU:'||';
-
+LCURLY : '{';
+RCURLY : '}';
 LCOL:'[';
 RCOL:']';
 LPAR:'(';
@@ -48,17 +40,28 @@ VIRGULA : ',';
 DOISPONTOS: ':';
 PVIRGULA : ';';
 
-INT: 'int';
-BOOLEAN: 'boolean';
-BOOLEANLITERAL: 'true'|'false';
 
-BREAK: 'break';
-CALLOUT: 'callout';
-CLASS: 'class';
-PROGRAM: 'Program';
-CONTINUE: 'continue';
-RETURN: 'return';
-VOID: 'void';
+
+VEZES:'*';
+DIV:'/';
+MENOS:'-';
+MAIS:'+';
+PORCENTO:'%';
+EXCLAMA:'!';
+E:'&&';
+OU:'||';
+
+IGUAL:'==';
+DIFERENTE:'!=';
+MAIOR:'>';
+MENOR:'<';
+MAIORIGUAL:'>=';
+MENORIGUAL:'<=';
+MAISIGUAL:'+=';
+MENOSIGUAL:'-=';
+ATRIB: '=';
+
+ 
 
 WS : [ \t\r\n]+ -> skip;
 SL_COMMENT : '//' (~'\n')*'\n' -> skip;
