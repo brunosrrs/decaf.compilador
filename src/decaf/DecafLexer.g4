@@ -62,6 +62,7 @@ WS : [ \t\r\n]+ -> skip;
 
 SL_COMMENT : '//'(~'\n')*'\n' -> skip;
 
+DENIEDACCESS : '0x';
 ID : (LETRAS|'_')(LETRAS|NUM|'_')*;
 CHAR : '\'' (ESC|LETRAS|NUM|OUTROS) '\'';
 STRING : '"'(LETRAS|NUM|SIMBOLOS)* '"';

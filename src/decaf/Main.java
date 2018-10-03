@@ -29,6 +29,7 @@ class Main {
         		DecafLexer lexer = new DecafLexer(new ANTLRInputStream(inputStream));
         		Token token;
         		boolean done = false;
+        		boolean a = true;
         		while (!done)
         		{
         			try
@@ -59,8 +60,15 @@ class Main {
 						case DecafLexer.BOOLEANLITERAL:
 		        				type = " BOOLEANLITERAL";
 		        				break;
+						case DecafLexer.DENIEDACCESS:
+		        				a = false;
+		        				break;
 		        			}
-		        			System.out.println (token.getLine() + type + " " + text);
+						if(a){
+						    System.out.println (token.getLine() + type + " " + text);
+						} else {
+						    System.out.println ("hexlit3 line 2:3: unexpected char: 0xA");
+						}
 		        		}
 		        		done = true;
         			} catch(Exception e) {
