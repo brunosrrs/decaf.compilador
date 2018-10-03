@@ -16,7 +16,7 @@ field_decl: type id (VIRGULA type id)* PVIRGULA;
 
 method_decl: (type|VOID) ID LPAR (type ID (VIRGULA type ID)*)? RPAR block;
 
-block: LCURLY var_decl* statement* RCURLY;
+block: LCURLY (var_decl)* (statement)* RCURLY;
 
 var_decl: (type ID)* PVIRGULA;
 
@@ -33,7 +33,9 @@ statement: location assign_op expr PVIRGULA
 
 assign_op: ATRIB | MAISIGUAL | MENOSIGUAL ;
 
-method_call: ID LPAR (expr (VIRGULA expr)*)? RPAR | CALLOUT LPAR string_literal (VIRGULA callout_arg(VIRGULA callout_arg)*)? RPAR;
+method_call: method_name LPAR (expr (VIRGULA expr)*)? RPAR | CALLOUT LPAR string_literal (VIRGULA callout_arg(VIRGULA callout_arg)*)? RPAR;
+
+method_name : ID;
 
 location: ID | ID LCOL expr RCOL;
 
@@ -45,7 +47,7 @@ expr: location
 	|EXCLAMA expr
 	|LPAR expr RPAR;
 
-callout_arg: expr | STRING;
+callout_arg: expr | string_literal;
 
 bin_op: arith_op | rel_op | eq_op | cond_op;
 
@@ -57,22 +59,13 @@ eq_op: IGUAL|DIFERENTE;
 
 cond_op: E|OU;
 
-literal : int_literal | CHAR | BOOLEANLITERAL;
+literal : int_literal | CHAR | boolean_literal;
 
 int_literal : INTLITERAL | HEXLITERAL;
 
+string_literal : STRING;
+
+boolean_literal : BOOLEANLITERAL;
+
+
 id : ID | ID LCOL? int_literal+ RCOL?;
-
-string_literal: STRING;
-
-
-
-
-
-
-
-
-
-
-
-

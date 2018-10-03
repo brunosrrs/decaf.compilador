@@ -22,60 +22,55 @@ CONTINUE: 'continue';
 RETURN: 'return';
 VOID: 'void';
 
-IF: 'if';
-ELSE: 'else';
-FOR: 'for';
+IF:'if';
+ELSE:'else';
+FOR:'for';
 INT: 'int';
 BOOLEAN: 'boolean';
 BOOLEANLITERAL: 'true'|'false';
 
-LCURLY : '{';
-RCURLY : '}';
+LCURLY:'{';
+RCURLY:'}';
 LCOL:'[';
 RCOL:']';
 LPAR:'(';
 RPAR:')';
 
 VIRGULA : ',';
-DOISPONTOS: ':';
 PVIRGULA : ';';
-
-
 
 VEZES:'*';
 DIV:'/';
 MENOS:'-';
 MAIS:'+';
-PORCENTO:'%';
+PORCENTO: '%';
 EXCLAMA:'!';
 E:'&&';
 OU:'||';
 
 IGUAL:'==';
 DIFERENTE:'!=';
-MAIOR:'>';
 MENOR:'<';
-MAIORIGUAL:'>=';
+MAIOR:'>';
 MENORIGUAL:'<=';
+MAIORIGUAL:'>=';
 MAISIGUAL:'+=';
 MENOSIGUAL:'-=';
-ATRIB: '=';
-
- 
+ATRIB:'=';
 
 WS : [ \t\r\n]+ -> skip;
-SL_COMMENT : '//' (~'\n')*'\n' -> skip;
+
+SL_COMMENT : '//'(~'\n')*'\n' -> skip;
 
 ID : (LETRAS|'_')(LETRAS|NUM|'_')*;
 CHAR : '\'' (ESC|LETRAS|NUM|OUTROS) '\'';
 STRING : '"'(LETRAS|NUM|SIMBOLOS)* '"';
-HEXLITERAL : PREFIXOHEX (HEXLETRAS|NUM)+;
-INTLITERAL : NUM+~'x';
+INTLITERAL : NUM(NUM)*;
+HEXLITERAL : '0x'(NUM|HEXLETRAS)+;
 
-fragment ESC : '\\'('n'|'"'|'t'|'\\');
+fragment ESC : '\\'('n'|'t'|'\\'|'"');
 fragment LETRAS : ('a'..'z'|'A'..'Z');
 fragment NUM  : ('0'..'9');
 fragment SIMBOLOS : (' '|'!'|'"'|'#'|'$'|'%'|'&'|'\\\''|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~'|'\t'|'\\'|'\"');
-fragment OUTROS: (' '|'!'|'#'|'$'|'%'|'&'|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~');
+fragment OUTROS: (' '|'!'|'#'|'$'|'%'|'&'|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'`'|'{'|'|'|'}'|'~');
 fragment HEXLETRAS : ('a'..'f'|'A'..'F');
-fragment PREFIXOHEX : '0x';
